@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UploadRouteImport } from './routes/upload'
 import { Route as SettingRouteImport } from './routes/setting'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as IndexRouteImport } from './routes/index'
 
 const UploadRoute = UploadRouteImport.update({
   id: '/upload',
@@ -23,38 +23,38 @@ const SettingRoute = SettingRouteImport.update({
   path: '/setting',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/about': typeof AboutRoute
+  '/': typeof IndexRoute
   '/setting': typeof SettingRoute
   '/upload': typeof UploadRoute
 }
 export interface FileRoutesByTo {
-  '/about': typeof AboutRoute
+  '/': typeof IndexRoute
   '/setting': typeof SettingRoute
   '/upload': typeof UploadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/about': typeof AboutRoute
+  '/': typeof IndexRoute
   '/setting': typeof SettingRoute
   '/upload': typeof UploadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/about' | '/setting' | '/upload'
+  fullPaths: '/' | '/setting' | '/upload'
   fileRoutesByTo: FileRoutesByTo
-  to: '/about' | '/setting' | '/upload'
-  id: '__root__' | '/about' | '/setting' | '/upload'
+  to: '/' | '/setting' | '/upload'
+  id: '__root__' | '/' | '/setting' | '/upload'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  AboutRoute: typeof AboutRoute
+  IndexRoute: typeof IndexRoute
   SettingRoute: typeof SettingRoute
   UploadRoute: typeof UploadRoute
 }
@@ -75,18 +75,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  AboutRoute: AboutRoute,
+  IndexRoute: IndexRoute,
   SettingRoute: SettingRoute,
   UploadRoute: UploadRoute,
 }
