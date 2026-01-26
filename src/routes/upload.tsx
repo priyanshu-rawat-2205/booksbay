@@ -1,13 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import UploadBook from "../componrents/upload-book/upload";
 
 export const Route = createFileRoute("/upload")({
-	component: RouteComponent,
+	component: UploadBook,
 });
-
-function RouteComponent() {
-	return (
-		<div className="flex justify-center place-content-center h-screen w-screen">
-			Upload
-		</div>
-	);
-}
